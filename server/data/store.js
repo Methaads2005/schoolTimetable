@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { initialSchoolData } from './initialData.js';
+import { initialSchoolData, starterTemplateData } from './initialData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,11 +21,14 @@ class SchoolStore {
       } else {
         const raw = fs.readFileSync(DB_FILE, 'utf-8');
         this.data = JSON.parse(raw);
-        // Ensure all required fields exist
-        if (!this.data.timetable) this.data.timetable = initialSchoolData.timetable;
-        if (!this.data.specialTests) this.data.specialTests = initialSchoolData.specialTests;
-        if (!this.data.substitutions) this.data.substitutions = initialSchoolData.substitutions;
-        if (!this.data.leaves) this.data.leaves = initialSchoolData.leaves;
+        // Ensure clean regular hours without morning/evening shifts
+        if (!this.data.settings?.regularHours) {
+          this.data.settings = initialSchoolData.settings;
+        }
+        if (!this.data.timetable) this.data.timetable = [];
+        if (!this.data.specialTests) this.data.specialTests = [];
+        if (!this.data.substitutions) this.data.substitutions = [];
+        if (!this.data.leaves) this.data.leaves = [];
       }
     } catch (err) {
       console.error('Error loading DB, restoring initial data:', err);
@@ -44,6 +47,29 @@ class SchoolStore {
 
   reset() {
     this.data = JSON.parse(JSON.stringify(initialSchoolData));
+    this.persist();
+    return this.data;
+  }
+
+  loadStarterTemplate() {
+    this.data = JSON.parse(JSON.stringify(starterTemplateData));
+    this.persist();
+    return this.data;
+  }
+
+  clearAll() {
+    this.data = {
+      ...initialSchoolData,
+      classes: [],
+      subjects: [],
+      laboratories: [],
+      teachers: [],
+      requirements: [],
+      timetable: [],
+      specialTests: [],
+      substitutions: [],
+      leaves: []
+    };
     this.persist();
     return this.data;
   }
@@ -69,7 +95,6 @@ class SchoolStore {
     const idx = this.data.teachers.findIndex(t => t.id === id);
     if (idx !== -1) {
       this.data.teachers[idx] = { ...this.data.teachers[idx], ...updates };
-      // Also update teacherName in timetable if name changed
       if (updates.name) {
         this.data.timetable.forEach(entry => {
           if (entry.teacherId === id) entry.teacherName = updates.name;
@@ -83,7 +108,6 @@ class SchoolStore {
 
   deleteTeacher(id) {
     this.data.teachers = this.data.teachers.filter(t => t.id !== id);
-    // Remove or unassign from timetable
     this.data.timetable = this.data.timetable.map(entry => {
       if (entry.teacherId === id) {
         return { ...entry, teacherId: null, teacherName: 'Unassigned' };
@@ -211,7 +235,7 @@ class SchoolStore {
     }
     const idx = this.data.timetable.findIndex(e => 
       e.id === entry.id || 
-      (e.classId === entry.classId && e.day === entry.day && String(e.period) === String(entry.period) && e.shift === (entry.shift || 'regular'))
+      (e.classId === entry.classId && e.day === entry.day && String(e.period) === String(entry.period))
     );
     if (idx !== -1) {
       this.data.timetable[idx] = { ...this.data.timetable[idx], ...entry };
@@ -222,9 +246,9 @@ class SchoolStore {
     return entry;
   }
 
-  deleteTimetableEntry(classId, day, period, shift = 'regular') {
+  deleteTimetableEntry(classId, day, period) {
     this.data.timetable = this.data.timetable.filter(e => 
-      !(e.classId === classId && e.day === day && String(e.period) === String(period) && (e.shift || 'regular') === shift)
+      !(e.classId === classId && e.day === day && String(e.period) === String(period))
     );
     this.persist();
     return true;
@@ -268,7 +292,6 @@ class SchoolStore {
     sub.timestamp = new Date().toISOString();
     this.data.substitutions.push(sub);
 
-    // Apply substitution to timetable for this day & period if exists
     const entry = this.data.timetable.find(e => 
       e.classId === sub.classId && 
       e.day === sub.day && 

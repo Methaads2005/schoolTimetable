@@ -12,6 +12,16 @@ export const api = {
     return res.json();
   },
 
+  loadStarterTemplate: async () => {
+    const res = await fetch(`${API_BASE}/load-starter`, { method: 'POST' });
+    return res.json();
+  },
+
+  clearAllData: async () => {
+    const res = await fetch(`${API_BASE}/clear-all`, { method: 'POST' });
+    return res.json();
+  },
+
   // Dashboard Summary
   getDashboardSummary: async () => {
     const res = await fetch(`${API_BASE}/dashboard/summary`);

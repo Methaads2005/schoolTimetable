@@ -19,10 +19,22 @@ app.get('/api/all', (req, res) => {
   res.json(store.getAll());
 });
 
-// Reset to factory defaults
+// Reset to clean state (no sample data)
 app.post('/api/reset', (req, res) => {
   const data = store.reset();
-  res.json({ message: 'Database reset to default sample data successfully', data });
+  res.json({ message: 'All sample data removed successfully. Clean database initialized.', data });
+});
+
+// Load optional starter template
+app.post('/api/load-starter', (req, res) => {
+  const data = store.loadStarterTemplate();
+  res.json({ message: 'Starter school template loaded successfully.', data });
+});
+
+// Clear all data
+app.post('/api/clear-all', (req, res) => {
+  const data = store.clearAll();
+  res.json({ message: 'All records cleared successfully.', data });
 });
 
 // Teachers
@@ -272,9 +284,7 @@ app.get('/api/reports/workload', (req, res) => {
   const timetable = all.timetable;
 
   const workloadStats = teachers.map(teacher => {
-    const regularPeriods = timetable.filter(e => (e.teacherId === teacher.id || e.substitutedTeacherId === teacher.id) && e.shift === 'regular');
-    const morningPeriods = timetable.filter(e => e.teacherId === teacher.id && e.shift === 'morning');
-    const eveningPeriods = timetable.filter(e => e.teacherId === teacher.id && e.shift === 'evening');
+    const regularPeriods = timetable.filter(e => (e.teacherId === teacher.id || e.substitutedTeacherId === teacher.id));
     const labSessions = timetable.filter(e => e.teacherId === teacher.id && e.labId);
     
     // Day breakdown
@@ -291,10 +301,7 @@ app.get('/api/reports/workload', (req, res) => {
       maxPeriodsPerDay: teacher.maxPeriodsPerDay || 5,
       maxPeriodsPerWeek: teacher.maxPeriodsPerWeek || 24,
       totalAssignedRegular: regularPeriods.length,
-      morningCount: morningPeriods.length,
-      eveningCount: eveningPeriods.length,
       labCount: labSessions.length,
-      totalAllShifts: regularPeriods.length + morningPeriods.length + eveningPeriods.length,
       utilizationPercentage: Math.round((regularPeriods.length / (teacher.maxPeriodsPerWeek || 24)) * 100),
       dayCounts
     };

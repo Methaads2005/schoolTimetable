@@ -118,32 +118,6 @@ export class TimetableEngine {
               });
             }
           }
-
-          // Check shift availability
-          if (shift === 'morning' && !teacherObj.morningAvailable) {
-            conflicts.push({
-              type: 'SHIFT_MISMATCH',
-              severity: 'warning',
-              teacherId: effectiveTeacherId,
-              teacherName: teacherObj.name,
-              day,
-              period,
-              message: `Teacher ${teacherObj.name} has not opted in for Morning Coaching shift.`,
-              suggestion: `Assign a teacher with active Morning Class availability.`
-            });
-          }
-          if (shift === 'evening' && !teacherObj.eveningAvailable) {
-            conflicts.push({
-              type: 'SHIFT_MISMATCH',
-              severity: 'warning',
-              teacherId: effectiveTeacherId,
-              teacherName: teacherObj.name,
-              day,
-              period,
-              message: `Teacher ${teacherObj.name} has not opted in for Evening Coaching shift.`,
-              suggestion: `Assign a teacher with active Evening Class availability.`
-            });
-          }
         }
 
         // Track daily workload
@@ -559,8 +533,7 @@ export class TimetableEngine {
     // 1. Affected periods on the given day
     const affectedPeriods = timetable.filter(e => 
       (e.teacherId === absentTeacherId || e.substitutedTeacherId === absentTeacherId) &&
-      e.day === day &&
-      e.shift === 'regular'
+      e.day === day
     );
 
     // Set of teachers on leave on this day
@@ -570,7 +543,7 @@ export class TimetableEngine {
     // Compute today's current load for all teachers
     const dailyLoad = new Map();
     timetable.forEach(e => {
-      if (e.day === day && e.shift === 'regular') {
+      if (e.day === day) {
         const tid = e.substitutedTeacherId || e.teacherId;
         if (tid) dailyLoad.set(tid, (dailyLoad.get(tid) || 0) + 1);
       }

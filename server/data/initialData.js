@@ -1,5 +1,49 @@
 export const initialSchoolData = {
   schoolInfo: {
+    name: "School Timetable Management System",
+    code: "SCH-2026",
+    academicYear: "2026-2027",
+    term: "Term 1",
+    address: "Campus Grounds",
+    contactEmail: "admin@school.edu",
+    phone: ""
+  },
+  settings: {
+    workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    periodsPerDay: 8,
+    saturdayPeriods: 6,
+    regularHours: {
+      name: "Regular School Hours",
+      startTime: "09:00 AM",
+      endTime: "04:00 PM",
+      periodTimings: [
+        { period: 1, start: "09:00 AM", end: "09:45 AM", type: "class" },
+        { period: 2, start: "09:45 AM", end: "10:30 AM", type: "class" },
+        { period: "Break", start: "10:30 AM", end: "10:45 AM", type: "break", name: "Recess" },
+        { period: 3, start: "10:45 AM", end: "11:30 AM", type: "class" },
+        { period: 4, start: "11:30 AM", end: "12:15 PM", type: "class" },
+        { period: "Lunch", start: "12:15 PM", end: "01:00 PM", type: "break", name: "Lunch Break" },
+        { period: 5, start: "01:00 PM", end: "01:45 PM", type: "class" },
+        { period: 6, start: "01:45 PM", end: "02:30 PM", type: "class" },
+        { period: 7, start: "02:30 PM", end: "03:15 PM", type: "class" },
+        { period: 8, start: "03:15 PM", end: "04:00 PM", type: "class" }
+      ]
+    }
+  },
+  classes: [],
+  subjects: [],
+  laboratories: [],
+  teachers: [],
+  requirements: [],
+  timetable: [],
+  specialTests: [],
+  substitutions: [],
+  leaves: []
+};
+
+// Optional Starter Template for quick testing if requested
+export const starterTemplateData = {
+  schoolInfo: {
     name: "Indhrametha Model Senior Secondary School",
     code: "IMSSS-CBSE-4102",
     academicYear: "2026-2027",
@@ -12,49 +56,29 @@ export const initialSchoolData = {
     workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     periodsPerDay: 8,
     saturdayPeriods: 6,
-    shifts: {
-      morning: {
-        name: "Morning Coaching",
-        enabled: true,
-        startTime: "07:30 AM",
-        endTime: "08:30 AM",
-        targetClasses: ["10-A", "10-B", "11-A", "12-A"]
-      },
-      regular: {
-        name: "Regular Hours",
-        startTime: "09:00 AM",
-        endTime: "04:00 PM",
-        periodTimings: [
-          { period: 1, start: "09:00 AM", end: "09:45 AM", type: "class" },
-          { period: 2, start: "09:45 AM", end: "10:30 AM", type: "class" },
-          { period: "Break", start: "10:30 AM", end: "10:45 AM", type: "break", name: "Recess" },
-          { period: 3, start: "10:45 AM", end: "11:30 AM", type: "class" },
-          { period: 4, start: "11:30 AM", end: "12:15 PM", type: "class" },
-          { period: "Lunch", start: "12:15 PM", end: "01:00 PM", type: "break", name: "Lunch Break" },
-          { period: 5, start: "01:00 PM", end: "01:45 PM", type: "class" },
-          { period: 6, start: "01:45 PM", end: "02:30 PM", type: "class" },
-          { period: 7, start: "02:30 PM", end: "03:15 PM", type: "class" },
-          { period: 8, start: "03:15 PM", end: "04:00 PM", type: "class" }
-        ]
-      },
-      evening: {
-        name: "Evening Special Coaching",
-        enabled: true,
-        startTime: "04:30 PM",
-        endTime: "05:30 PM",
-        targetClasses: ["10-A", "12-A", "12-B"]
-      }
+    regularHours: {
+      name: "Regular School Hours",
+      startTime: "09:00 AM",
+      endTime: "04:00 PM",
+      periodTimings: [
+        { period: 1, start: "09:00 AM", end: "09:45 AM", type: "class" },
+        { period: 2, start: "09:45 AM", end: "10:30 AM", type: "class" },
+        { period: "Break", start: "10:30 AM", end: "10:45 AM", type: "break", name: "Recess" },
+        { period: 3, start: "10:45 AM", end: "11:30 AM", type: "class" },
+        { period: 4, start: "11:30 AM", end: "12:15 PM", type: "class" },
+        { period: "Lunch", start: "12:15 PM", end: "01:00 PM", type: "break", name: "Lunch Break" },
+        { period: 5, start: "01:00 PM", end: "01:45 PM", type: "class" },
+        { period: 6, start: "01:45 PM", end: "02:30 PM", type: "class" },
+        { period: 7, start: "02:30 PM", end: "03:15 PM", type: "class" },
+        { period: 8, start: "03:15 PM", end: "04:00 PM", type: "class" }
+      ]
     }
   },
   classes: [
     { id: "C10A", name: "10-A", grade: "10", section: "A", room: "Room 101", classTeacherId: "T101", totalStudents: 38 },
     { id: "C10B", name: "10-B", grade: "10", section: "B", room: "Room 102", classTeacherId: "T102", totalStudents: 36 },
     { id: "C11A", name: "11-A", grade: "11", section: "A (Science)", room: "Room 201", classTeacherId: "T103", totalStudents: 40 },
-    { id: "C11B", name: "11-B", grade: "11", section: "B (Commerce)", room: "Room 202", classTeacherId: "T107", totalStudents: 35 },
-    { id: "C12A", name: "12-A", grade: "12", section: "A (Science)", room: "Room 301", classTeacherId: "T104", totalStudents: 42 },
-    { id: "C12B", name: "12-B", grade: "12", section: "B (Commerce)", room: "Room 302", classTeacherId: "T108", totalStudents: 34 },
-    { id: "C09A", name: "9-A", grade: "9", section: "A", room: "Room 001", classTeacherId: "T105", totalStudents: 40 },
-    { id: "C08A", name: "8-A", grade: "8", section: "A", room: "Room 002", classTeacherId: "T106", totalStudents: 38 }
+    { id: "C12A", name: "12-A", grade: "12", section: "A (Science)", room: "Room 301", classTeacherId: "T104", totalStudents: 42 }
   ],
   subjects: [
     { id: "SUB-MAT", code: "MAT101", name: "Mathematics", department: "Mathematics", type: "Theory", weeklyPeriods: 6, color: "#3b82f6" },
@@ -62,17 +86,8 @@ export const initialSchoolData = {
     { id: "SUB-PHY-LAB", code: "PHY101L", name: "Physics Practical", department: "Science", type: "Lab", weeklyPeriods: 2, isConsecutive: true, labId: "LAB-PHY", color: "#6366f1" },
     { id: "SUB-CHE", code: "CHE101", name: "Chemistry", department: "Science", type: "Theory", weeklyPeriods: 5, color: "#ec4899" },
     { id: "SUB-CHE-LAB", code: "CHE101L", name: "Chemistry Practical", department: "Science", type: "Lab", weeklyPeriods: 2, isConsecutive: true, labId: "LAB-CHE", color: "#d946ef" },
-    { id: "SUB-BIO", code: "BIO101", name: "Biology", department: "Science", type: "Theory", weeklyPeriods: 4, color: "#10b981" },
-    { id: "SUB-BIO-LAB", code: "BIO101L", name: "Biology Practical", department: "Science", type: "Lab", weeklyPeriods: 2, isConsecutive: true, labId: "LAB-BIO", color: "#059669" },
     { id: "SUB-ENG", code: "ENG101", name: "English Core", department: "Languages", type: "Theory", weeklyPeriods: 5, color: "#f59e0b" },
-    { id: "SUB-CSC", code: "CSC101", name: "Computer Science", department: "Computer Science", type: "Theory", weeklyPeriods: 3, color: "#06b6d4" },
-    { id: "SUB-CSC-LAB", code: "CSC101L", name: "Computer Science Practical", department: "Computer Science", type: "Lab", weeklyPeriods: 2, isConsecutive: true, labId: "LAB-CSC1", color: "#0891b2" },
-    { id: "SUB-SOC", code: "SOC101", name: "Social Science", department: "Social Studies", type: "Theory", weeklyPeriods: 5, color: "#f97316" },
-    { id: "SUB-HIN", code: "HIN101", name: "Hindi / Tamil Lang", department: "Languages", type: "Theory", weeklyPeriods: 4, color: "#e11d48" },
-    { id: "SUB-ACC", code: "ACC101", name: "Accountancy", department: "Commerce", type: "Theory", weeklyPeriods: 6, color: "#14b8a6" },
-    { id: "SUB-BST", code: "BST101", name: "Business Studies", department: "Commerce", type: "Theory", weeklyPeriods: 5, color: "#84cc16" },
-    { id: "SUB-ECO", code: "ECO101", name: "Economics", department: "Commerce", type: "Theory", weeklyPeriods: 5, color: "#a855f7" },
-    { id: "SUB-PED", code: "PED101", name: "Physical Education", department: "Sports", type: "Activity", weeklyPeriods: 2, color: "#22c55e" }
+    { id: "SUB-CSC-LAB", code: "CSC101L", name: "Computer Science Practical", department: "Computer Science", type: "Lab", weeklyPeriods: 2, isConsecutive: true, labId: "LAB-CSC1", color: "#0891b2" }
   ],
   laboratories: [
     {
@@ -83,9 +98,8 @@ export const initialSchoolData = {
       capacity: 45,
       room: "Block A - 2nd Floor",
       assignedInstructorId: "T109",
-      equipment: "45 Core-i7 Terminals, High-speed Gigabit Switch, Projector, UPS Backup",
-      availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      notes: "Dedicated for Senior Secondary CS and Python programming practicals"
+      equipment: "45 PCs, High speed LAN, Projector",
+      availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     },
     {
       id: "LAB-PHY",
@@ -95,9 +109,8 @@ export const initialSchoolData = {
       capacity: 36,
       room: "Science Block - 1st Floor",
       assignedInstructorId: "T103",
-      equipment: "Spectrometers, Optical benches, Galvanometers, Potentiometers, Sonometer",
-      availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      notes: "Equipped for CBSE Class 11 and 12 physics experiments"
+      equipment: "Spectrometers, Optical benches",
+      availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     },
     {
       id: "LAB-CHE",
@@ -107,33 +120,8 @@ export const initialSchoolData = {
       capacity: 36,
       room: "Science Block - 1st Floor",
       assignedInstructorId: "T104",
-      equipment: "Fume hood, Digital balances, Burettes, Pipettes, Chemical reagent store",
-      availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      notes: "Strict safety protocols; eyewash station and chemical extinguishers installed"
-    },
-    {
-      id: "LAB-BIO",
-      name: "Gregor Mendel Biology Laboratory",
-      code: "BIO-LAB-01",
-      type: "Biology",
-      capacity: 36,
-      room: "Science Block - 2nd Floor",
-      assignedInstructorId: "T110",
-      Equipment: "Compound microscopes, Dissection kits, Preserved specimens, Human skeleton model",
-      availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      notes: "Used for Classes 9 to 12 practicals"
-    },
-    {
-      id: "LAB-STEM",
-      name: "Atal Tinkering STEM & Robotics Lab",
-      code: "STEM-LAB-01",
-      type: "Robotics & Innovation",
-      capacity: 32,
-      room: "Tech Block - Ground Floor",
-      assignedInstructorId: "T109",
-      equipment: "3D Printers, Arduino kits, Raspberry Pi 5, Soldering stations, Sensor kits",
-      availableDays: ["Monday", "Wednesday", "Friday", "Saturday"],
-      notes: "Hands-on engineering and experiential learning"
+      equipment: "Fume hood, Digital balances, Reagent store",
+      availableDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     }
   ],
   teachers: [
@@ -147,8 +135,6 @@ export const initialSchoolData = {
       maxPeriodsPerDay: 5,
       maxPeriodsPerWeek: 24,
       workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      morningAvailable: true,
-      eveningAvailable: true,
       labCapability: false,
       preferredSlots: [1, 2, 3],
       unavailablePeriods: [],
@@ -162,15 +148,13 @@ export const initialSchoolData = {
       name: "Mrs. Radhika Krishnan",
       department: "Mathematics",
       subjects: ["Mathematics"],
-      classes: ["9-A", "10-B", "11-A"],
+      classes: ["10-B", "11-A"],
       maxPeriodsPerDay: 5,
       maxPeriodsPerWeek: 22,
       workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      morningAvailable: false,
-      eveningAvailable: true,
       labCapability: false,
       preferredSlots: [2, 3, 4],
-      unavailablePeriods: [{ day: "Wednesday", period: 6 }],
+      unavailablePeriods: [],
       status: "active",
       email: "radhika.k@school.edu",
       phone: "+91 98401 23457"
@@ -185,8 +169,6 @@ export const initialSchoolData = {
       maxPeriodsPerDay: 5,
       maxPeriodsPerWeek: 22,
       workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      morningAvailable: true,
-      eveningAvailable: false,
       labCapability: true,
       preferredSlots: [3, 4, 5],
       unavailablePeriods: [],
@@ -204,8 +186,6 @@ export const initialSchoolData = {
       maxPeriodsPerDay: 5,
       maxPeriodsPerWeek: 24,
       workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      morningAvailable: true,
-      eveningAvailable: true,
       labCapability: true,
       preferredSlots: [1, 2, 5, 6],
       unavailablePeriods: [],
@@ -223,8 +203,6 @@ export const initialSchoolData = {
       maxPeriodsPerDay: 5,
       maxPeriodsPerWeek: 24,
       workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      morningAvailable: false,
-      eveningAvailable: false,
       labCapability: false,
       preferredSlots: [2, 3, 5],
       unavailablePeriods: [],
@@ -233,367 +211,32 @@ export const initialSchoolData = {
       phone: "+91 98401 23460"
     },
     {
-      id: "T106",
-      staffId: "STF-206",
-      name: "Mr. Rajesh Khanna",
-      department: "Social Studies",
-      subjects: ["Social Science"],
-      classes: ["9-A", "10-A", "10-B"],
-      maxPeriodsPerDay: 5,
-      maxPeriodsPerWeek: 20,
-      workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      morningAvailable: false,
-      eveningAvailable: false,
-      labCapability: false,
-      preferredSlots: [4, 5, 6],
-      unavailablePeriods: [],
-      status: "active",
-      email: "rajesh.k@school.edu",
-      phone: "+91 98401 23461"
-    },
-    {
-      id: "T107",
-      staffId: "STF-207",
-      name: "Mr. Anand Ranganathan",
-      department: "Commerce",
-      subjects: ["Accountancy", "Business Studies"],
-      classes: ["11-B", "12-B"],
-      maxPeriodsPerDay: 5,
-      maxPeriodsPerWeek: 24,
-      workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      morningAvailable: true,
-      eveningAvailable: true,
-      labCapability: false,
-      preferredSlots: [1, 2, 3],
-      unavailablePeriods: [],
-      status: "active",
-      email: "anand.r@school.edu",
-      phone: "+91 98401 23462"
-    },
-    {
-      id: "T108",
-      staffId: "STF-208",
-      name: "Mrs. Priya Narayanan",
-      department: "Commerce",
-      subjects: ["Economics"],
-      classes: ["11-B", "12-B", "11-A", "12-A"],
-      maxPeriodsPerDay: 5,
-      maxPeriodsPerWeek: 22,
-      workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      morningAvailable: false,
-      eveningAvailable: true,
-      labCapability: false,
-      preferredSlots: [3, 4, 5],
-      unavailablePeriods: [],
-      status: "active",
-      email: "priya.n@school.edu",
-      phone: "+91 98401 23463"
-    },
-    {
       id: "T109",
       staffId: "STF-209",
       name: "Mr. K. Vigneshwaran",
       department: "Computer Science",
-      subjects: ["Computer Science", "Computer Science Practical"],
+      subjects: ["Computer Science Practical"],
       classes: ["10-A", "10-B", "11-A", "12-A"],
       maxPeriodsPerDay: 5,
       maxPeriodsPerWeek: 22,
       workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      morningAvailable: true,
-      eveningAvailable: false,
       labCapability: true,
       preferredSlots: [5, 6, 7],
       unavailablePeriods: [],
       status: "active",
       email: "vignesh.k@school.edu",
       phone: "+91 98401 23464"
-    },
-    {
-      id: "T110",
-      staffId: "STF-210",
-      name: "Mrs. Meenakshi Iyer",
-      department: "Science",
-      subjects: ["Biology", "Biology Practical"],
-      classes: ["10-A", "10-B", "11-A", "12-A"],
-      maxPeriodsPerDay: 5,
-      maxPeriodsPerWeek: 20,
-      workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      morningAvailable: false,
-      eveningAvailable: false,
-      labCapability: true,
-      preferredSlots: [1, 2, 3],
-      unavailablePeriods: [],
-      status: "active",
-      email: "meenakshi.i@school.edu",
-      phone: "+91 98401 23465"
-    },
-    {
-      id: "T111",
-      staffId: "STF-211",
-      name: "Mr. Balaji Natarajan",
-      department: "Languages",
-      subjects: ["Hindi / Tamil Lang"],
-      classes: ["8-A", "9-A", "10-A", "10-B"],
-      maxPeriodsPerDay: 5,
-      maxPeriodsPerWeek: 22,
-      workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      morningAvailable: false,
-      eveningAvailable: false,
-      labCapability: false,
-      preferredSlots: [4, 5, 6],
-      unavailablePeriods: [],
-      status: "active",
-      email: "balaji.n@school.edu",
-      phone: "+91 98401 23466"
-    },
-    {
-      id: "T112",
-      staffId: "STF-212",
-      name: "Coach R. Manoharan",
-      department: "Sports",
-      subjects: ["Physical Education"],
-      classes: ["10-A", "10-B", "11-A", "11-B", "12-A", "12-B"],
-      maxPeriodsPerDay: 4,
-      maxPeriodsPerWeek: 18,
-      workingDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      morningAvailable: true,
-      eveningAvailable: true,
-      labCapability: false,
-      preferredSlots: [7, 8],
-      unavailablePeriods: [],
-      status: "active",
-      email: "manoharan.r@school.edu",
-      phone: "+91 98401 23467"
     }
   ],
-  // Class-Subject period requirements
   requirements: [
-    // 10-A Requirements
     { classId: "10-A", subjectId: "SUB-MAT", periodsPerWeek: 6, teacherId: "T101" },
     { classId: "10-A", subjectId: "SUB-PHY", periodsPerWeek: 4, teacherId: "T104" },
     { classId: "10-A", subjectId: "SUB-CHE", periodsPerWeek: 4, teacherId: "T104" },
-    { classId: "10-A", subjectId: "SUB-BIO", periodsPerWeek: 4, teacherId: "T110" },
     { classId: "10-A", subjectId: "SUB-ENG", periodsPerWeek: 5, teacherId: "T105" },
-    { classId: "10-A", subjectId: "SUB-SOC", periodsPerWeek: 5, teacherId: "T106" },
-    { classId: "10-A", subjectId: "SUB-HIN", periodsPerWeek: 4, teacherId: "T111" },
-    { classId: "10-A", subjectId: "SUB-CSC-LAB", periodsPerWeek: 2, teacherId: "T109", labId: "LAB-CSC1", isConsecutive: true },
-    { classId: "10-A", subjectId: "SUB-PED", periodsPerWeek: 2, teacherId: "T112" },
-
-    // 10-B Requirements
-    { classId: "10-B", subjectId: "SUB-MAT", periodsPerWeek: 6, teacherId: "T102" },
-    { classId: "10-B", subjectId: "SUB-PHY", periodsPerWeek: 4, teacherId: "T104" },
-    { classId: "10-B", subjectId: "SUB-CHE", periodsPerWeek: 4, teacherId: "T104" },
-    { classId: "10-B", subjectId: "SUB-BIO", periodsPerWeek: 4, teacherId: "T110" },
-    { classId: "10-B", subjectId: "SUB-ENG", periodsPerWeek: 5, teacherId: "T105" },
-    { classId: "10-B", subjectId: "SUB-SOC", periodsPerWeek: 5, teacherId: "T106" },
-    { classId: "10-B", subjectId: "SUB-HIN", periodsPerWeek: 4, teacherId: "T111" },
-    { classId: "10-B", subjectId: "SUB-CSC-LAB", periodsPerWeek: 2, teacherId: "T109", labId: "LAB-CSC1", isConsecutive: true },
-    { classId: "10-B", subjectId: "SUB-PED", periodsPerWeek: 2, teacherId: "T112" },
-
-    // 11-A (Science) Requirements
-    { classId: "11-A", subjectId: "SUB-MAT", periodsPerWeek: 6, teacherId: "T102" },
-    { classId: "11-A", subjectId: "SUB-PHY", periodsPerWeek: 5, teacherId: "T103" },
-    { classId: "11-A", subjectId: "SUB-PHY-LAB", periodsPerWeek: 2, teacherId: "T103", labId: "LAB-PHY", isConsecutive: true },
-    { classId: "11-A", subjectId: "SUB-CHE", periodsPerWeek: 5, teacherId: "T104" },
-    { classId: "11-A", subjectId: "SUB-CHE-LAB", periodsPerWeek: 2, teacherId: "T104", labId: "LAB-CHE", isConsecutive: true },
-    { classId: "11-A", subjectId: "SUB-BIO", periodsPerWeek: 4, teacherId: "T110" },
-    { classId: "11-A", subjectId: "SUB-BIO-LAB", periodsPerWeek: 2, teacherId: "T110", labId: "LAB-BIO", isConsecutive: true },
-    { classId: "11-A", subjectId: "SUB-ENG", periodsPerWeek: 5, teacherId: "T105" },
-    { classId: "11-A", subjectId: "SUB-CSC", periodsPerWeek: 3, teacherId: "T109" },
-    { classId: "11-A", subjectId: "SUB-PED", periodsPerWeek: 2, teacherId: "T112" },
-
-    // 12-A (Science) Requirements
-    { classId: "12-A", subjectId: "SUB-MAT", periodsPerWeek: 6, teacherId: "T101" },
-    { classId: "12-A", subjectId: "SUB-PHY", periodsPerWeek: 5, teacherId: "T103" },
-    { classId: "12-A", subjectId: "SUB-PHY-LAB", periodsPerWeek: 2, teacherId: "T103", labId: "LAB-PHY", isConsecutive: true },
-    { classId: "12-A", subjectId: "SUB-CHE", periodsPerWeek: 5, teacherId: "T104" },
-    { classId: "12-A", subjectId: "SUB-CHE-LAB", periodsPerWeek: 2, teacherId: "T104", labId: "LAB-CHE", isConsecutive: true },
-    { classId: "12-A", subjectId: "SUB-BIO", periodsPerWeek: 4, teacherId: "T110" },
-    { classId: "12-A", subjectId: "SUB-BIO-LAB", periodsPerWeek: 2, teacherId: "T110", labId: "LAB-BIO", isConsecutive: true },
-    { classId: "12-A", subjectId: "SUB-ENG", periodsPerWeek: 5, teacherId: "T105" },
-    { classId: "12-A", subjectId: "SUB-CSC", periodsPerWeek: 3, teacherId: "T109" },
-    { classId: "12-A", subjectId: "SUB-PED", periodsPerWeek: 2, teacherId: "T112" }
+    { classId: "10-A", subjectId: "SUB-CSC-LAB", periodsPerWeek: 2, teacherId: "T109", labId: "LAB-CSC1", isConsecutive: true }
   ],
-  // Master Timetable Entries
-  // Format: { id, classId, day, period, shift: 'regular'|'morning'|'evening', subjectId, subjectName, teacherId, teacherName, room, labId, isLocked, isTest }
-  timetable: [
-    // --- Class 10-A Schedule ---
-    // Monday
-    { id: "TT-10A-M1", classId: "10-A", day: "Monday", period: 1, shift: "regular", subjectId: "SUB-MAT", subjectName: "Mathematics", teacherId: "T101", teacherName: "Dr. Arvind Sharma", room: "Room 101" },
-    { id: "TT-10A-M2", classId: "10-A", day: "Monday", period: 2, shift: "regular", subjectId: "SUB-PHY", subjectName: "Physics", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 101" },
-    { id: "TT-10A-M3", classId: "10-A", day: "Monday", period: 3, shift: "regular", subjectId: "SUB-ENG", subjectName: "English Core", teacherId: "T105", teacherName: "Mrs. Lakshmi Sundaram", room: "Room 101" },
-    { id: "TT-10A-M4", classId: "10-A", day: "Monday", period: 4, shift: "regular", subjectId: "SUB-SOC", subjectName: "Social Science", teacherId: "T106", teacherName: "Mr. Rajesh Khanna", room: "Room 101" },
-    { id: "TT-10A-M5", classId: "10-A", day: "Monday", period: 5, shift: "regular", subjectId: "SUB-CHE", subjectName: "Chemistry", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 101" },
-    { id: "TT-10A-M6", classId: "10-A", day: "Monday", period: 6, shift: "regular", subjectId: "SUB-BIO", subjectName: "Biology", teacherId: "T110", teacherName: "Mrs. Meenakshi Iyer", room: "Room 101" },
-    { id: "TT-10A-M7", classId: "10-A", day: "Monday", period: 7, shift: "regular", subjectId: "SUB-HIN", subjectName: "Hindi / Tamil Lang", teacherId: "T111", teacherName: "Mr. Balaji Natarajan", room: "Room 101" },
-    { id: "TT-10A-M8", classId: "10-A", day: "Monday", period: 8, shift: "regular", subjectId: "SUB-PED", subjectName: "Physical Education", teacherId: "T112", teacherName: "Coach R. Manoharan", room: "Playground" },
-
-    // Tuesday
-    { id: "TT-10A-T1", classId: "10-A", day: "Tuesday", period: 1, shift: "regular", subjectId: "SUB-ENG", subjectName: "English Core", teacherId: "T105", teacherName: "Mrs. Lakshmi Sundaram", room: "Room 101" },
-    { id: "TT-10A-T2", classId: "10-A", day: "Tuesday", period: 2, shift: "regular", subjectId: "SUB-MAT", subjectName: "Mathematics", teacherId: "T101", teacherName: "Dr. Arvind Sharma", room: "Room 101" },
-    { id: "TT-10A-T3", classId: "10-A", day: "Tuesday", period: 3, shift: "regular", subjectId: "SUB-CSC-LAB", subjectName: "Computer Science Practical", teacherId: "T109", teacherName: "Mr. K. Vigneshwaran", room: "Block A - 2nd Floor", labId: "LAB-CSC1", isConsecutive: true },
-    { id: "TT-10A-T4", classId: "10-A", day: "Tuesday", period: 4, shift: "regular", subjectId: "SUB-CSC-LAB", subjectName: "Computer Science Practical", teacherId: "T109", teacherName: "Mr. K. Vigneshwaran", room: "Block A - 2nd Floor", labId: "LAB-CSC1", isConsecutive: true },
-    { id: "TT-10A-T5", classId: "10-A", day: "Tuesday", period: 5, shift: "regular", subjectId: "SUB-SOC", subjectName: "Social Science", teacherId: "T106", teacherName: "Mr. Rajesh Khanna", room: "Room 101" },
-    { id: "TT-10A-T6", classId: "10-A", day: "Tuesday", period: 6, shift: "regular", subjectId: "SUB-PHY", subjectName: "Physics", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 101" },
-    { id: "TT-10A-T7", classId: "10-A", day: "Tuesday", period: 7, shift: "regular", subjectId: "SUB-CHE", subjectName: "Chemistry", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 101" },
-    { id: "TT-10A-T8", classId: "10-A", day: "Tuesday", period: 8, shift: "regular", subjectId: "SUB-HIN", subjectName: "Hindi / Tamil Lang", teacherId: "T111", teacherName: "Mr. Balaji Natarajan", room: "Room 101" },
-
-    // Wednesday
-    { id: "TT-10A-W1", classId: "10-A", day: "Wednesday", period: 1, shift: "regular", subjectId: "SUB-MAT", subjectName: "Mathematics", teacherId: "T101", teacherName: "Dr. Arvind Sharma", room: "Room 101" },
-    { id: "TT-10A-W2", classId: "10-A", day: "Wednesday", period: 2, shift: "regular", subjectId: "SUB-BIO", subjectName: "Biology", teacherId: "T110", teacherName: "Mrs. Meenakshi Iyer", room: "Room 101" },
-    { id: "TT-10A-W3", classId: "10-A", day: "Wednesday", period: 3, shift: "regular", subjectId: "SUB-SOC", subjectName: "Social Science", teacherId: "T106", teacherName: "Mr. Rajesh Khanna", room: "Room 101" },
-    { id: "TT-10A-W4", classId: "10-A", day: "Wednesday", period: 4, shift: "regular", subjectId: "SUB-ENG", subjectName: "English Core", teacherId: "T105", teacherName: "Mrs. Lakshmi Sundaram", room: "Room 101" },
-    { id: "TT-10A-W5", classId: "10-A", day: "Wednesday", period: 5, shift: "regular", subjectId: "SUB-PHY", subjectName: "Physics", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 101" },
-    { id: "TT-10A-W6", classId: "10-A", day: "Wednesday", period: 6, shift: "regular", subjectId: "SUB-CHE", subjectName: "Chemistry", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 101" },
-    { id: "TT-10A-W7", classId: "10-A", day: "Wednesday", period: 7, shift: "regular", subjectId: "SUB-HIN", subjectName: "Hindi / Tamil Lang", teacherId: "T111", teacherName: "Mr. Balaji Natarajan", room: "Room 101" },
-    { id: "TT-10A-W8", classId: "10-A", day: "Wednesday", period: 8, shift: "regular", subjectId: "SUB-PED", subjectName: "Physical Education", teacherId: "T112", teacherName: "Coach R. Manoharan", room: "Playground" },
-
-    // Thursday
-    { id: "TT-10A-TH1", classId: "10-A", day: "Thursday", period: 1, shift: "regular", subjectId: "SUB-ENG", subjectName: "English Core", teacherId: "T105", teacherName: "Mrs. Lakshmi Sundaram", room: "Room 101" },
-    { id: "TT-10A-TH2", classId: "10-A", day: "Thursday", period: 2, shift: "regular", subjectId: "SUB-MAT", subjectName: "Mathematics", teacherId: "T101", teacherName: "Dr. Arvind Sharma", room: "Room 101" },
-    { id: "TT-10A-TH3", classId: "10-A", day: "Thursday", period: 3, shift: "regular", subjectId: "SUB-PHY", subjectName: "Physics", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 101" },
-    { id: "TT-10A-TH4", classId: "10-A", day: "Thursday", period: 4, shift: "regular", subjectId: "SUB-BIO", subjectName: "Biology", teacherId: "T110", teacherName: "Mrs. Meenakshi Iyer", room: "Room 101" },
-    { id: "TT-10A-TH5", classId: "10-A", day: "Thursday", period: 5, shift: "regular", subjectId: "SUB-SOC", subjectName: "Social Science", teacherId: "T106", teacherName: "Mr. Rajesh Khanna", room: "Room 101" },
-    { id: "TT-10A-TH6", classId: "10-A", day: "Thursday", period: 6, shift: "regular", subjectId: "SUB-CHE", subjectName: "Chemistry", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 101" },
-    { id: "TT-10A-TH7", classId: "10-A", day: "Thursday", period: 7, shift: "regular", subjectId: "SUB-HIN", subjectName: "Hindi / Tamil Lang", teacherId: "T111", teacherName: "Mr. Balaji Natarajan", room: "Room 101" },
-    { id: "TT-10A-TH8", classId: "10-A", day: "Thursday", period: 8, shift: "regular", subjectId: "SUB-MAT", subjectName: "Mathematics", teacherId: "T101", teacherName: "Dr. Arvind Sharma", room: "Room 101" },
-
-    // Friday
-    { id: "TT-10A-F1", classId: "10-A", day: "Friday", period: 1, shift: "regular", subjectId: "SUB-MAT", subjectName: "Mathematics", teacherId: "T101", teacherName: "Dr. Arvind Sharma", room: "Room 101" },
-    { id: "TT-10A-F2", classId: "10-A", day: "Friday", period: 2, shift: "regular", subjectId: "SUB-ENG", subjectName: "English Core", teacherId: "T105", teacherName: "Mrs. Lakshmi Sundaram", room: "Room 101" },
-    { id: "TT-10A-F3", classId: "10-A", day: "Friday", period: 3, shift: "regular", subjectId: "SUB-BIO", subjectName: "Biology", teacherId: "T110", teacherName: "Mrs. Meenakshi Iyer", room: "Room 101" },
-    { id: "TT-10A-F4", classId: "10-A", day: "Friday", period: 4, shift: "regular", subjectId: "SUB-SOC", subjectName: "Social Science", teacherId: "T106", teacherName: "Mr. Rajesh Khanna", room: "Room 101" },
-    { id: "TT-10A-F5", classId: "10-A", day: "Friday", period: 5, shift: "regular", subjectId: "SUB-PHY", subjectName: "Physics", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 101" },
-    { id: "TT-10A-F6", classId: "10-A", day: "Friday", period: 6, shift: "regular", subjectId: "SUB-CHE", subjectName: "Chemistry", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 101" },
-
-    // Saturday
-    { id: "TT-10A-S1", classId: "10-A", day: "Saturday", period: 1, shift: "regular", subjectId: "SUB-MAT", subjectName: "Mathematics", teacherId: "T101", teacherName: "Dr. Arvind Sharma", room: "Room 101" },
-    { id: "TT-10A-S2", classId: "10-A", day: "Saturday", period: 2, shift: "regular", subjectId: "SUB-ENG", subjectName: "English Core", teacherId: "T105", teacherName: "Mrs. Lakshmi Sundaram", room: "Room 101" },
-
-    // --- Class 12-A Schedule (Senior Science) ---
-    // Monday
-    { id: "TT-12A-M1", classId: "12-A", day: "Monday", period: 1, shift: "regular", subjectId: "SUB-PHY", subjectName: "Physics", teacherId: "T103", teacherName: "Mr. Suresh Verma", room: "Room 301" },
-    { id: "TT-12A-M2", classId: "12-A", day: "Monday", period: 2, shift: "regular", subjectId: "SUB-CHE", subjectName: "Chemistry", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 301" },
-    { id: "TT-12A-M3", classId: "12-A", day: "Monday", period: 3, shift: "regular", subjectId: "SUB-MAT", subjectName: "Mathematics", teacherId: "T101", teacherName: "Dr. Arvind Sharma", room: "Room 301" },
-    { id: "TT-12A-M4", classId: "12-A", day: "Monday", period: 4, shift: "regular", subjectId: "SUB-ENG", subjectName: "English Core", teacherId: "T105", teacherName: "Mrs. Lakshmi Sundaram", room: "Room 301" },
-    { id: "TT-12A-M5", classId: "12-A", day: "Monday", period: 5, shift: "regular", subjectId: "SUB-PHY-LAB", subjectName: "Physics Practical", teacherId: "T103", teacherName: "Mr. Suresh Verma", room: "Science Block - 1st Floor", labId: "LAB-PHY", isConsecutive: true },
-    { id: "TT-12A-M6", classId: "12-A", day: "Monday", period: 6, shift: "regular", subjectId: "SUB-PHY-LAB", subjectName: "Physics Practical", teacherId: "T103", teacherName: "Mr. Suresh Verma", room: "Science Block - 1st Floor", labId: "LAB-PHY", isConsecutive: true },
-    { id: "TT-12A-M7", classId: "12-A", day: "Monday", period: 7, shift: "regular", subjectId: "SUB-CSC", subjectName: "Computer Science", teacherId: "T109", teacherName: "Mr. K. Vigneshwaran", room: "Room 301" },
-    { id: "TT-12A-M8", classId: "12-A", day: "Monday", period: 8, shift: "regular", subjectId: "SUB-BIO", subjectName: "Biology", teacherId: "T110", teacherName: "Mrs. Meenakshi Iyer", room: "Room 301" },
-
-    // Tuesday
-    { id: "TT-12A-T1", classId: "12-A", day: "Tuesday", period: 1, shift: "regular", subjectId: "SUB-MAT", subjectName: "Mathematics", teacherId: "T101", teacherName: "Dr. Arvind Sharma", room: "Room 301" },
-    { id: "TT-12A-T2", classId: "12-A", day: "Tuesday", period: 2, shift: "regular", subjectId: "SUB-PHY", subjectName: "Physics", teacherId: "T103", teacherName: "Mr. Suresh Verma", room: "Room 301" },
-    { id: "TT-12A-T3", classId: "12-A", day: "Tuesday", period: 3, shift: "regular", subjectId: "SUB-CHE-LAB", subjectName: "Chemistry Practical", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Science Block - 1st Floor", labId: "LAB-CHE", isConsecutive: true },
-    { id: "TT-12A-T4", classId: "12-A", day: "Tuesday", period: 4, shift: "regular", subjectId: "SUB-CHE-LAB", subjectName: "Chemistry Practical", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Science Block - 1st Floor", labId: "LAB-CHE", isConsecutive: true },
-    { id: "TT-12A-T5", classId: "12-A", day: "Tuesday", period: 5, shift: "regular", subjectId: "SUB-BIO", subjectName: "Biology", teacherId: "T110", teacherName: "Mrs. Meenakshi Iyer", room: "Room 301" },
-    { id: "TT-12A-T6", classId: "12-A", day: "Tuesday", period: 6, shift: "regular", subjectId: "SUB-ENG", subjectName: "English Core", teacherId: "T105", teacherName: "Mrs. Lakshmi Sundaram", room: "Room 301" },
-    { id: "TT-12A-T7", classId: "12-A", day: "Tuesday", period: 7, shift: "regular", subjectId: "SUB-CSC", subjectName: "Computer Science", teacherId: "T109", teacherName: "Mr. K. Vigneshwaran", room: "Room 301" },
-    { id: "TT-12A-T8", classId: "12-A", day: "Tuesday", period: 8, shift: "regular", subjectId: "SUB-PED", subjectName: "Physical Education", teacherId: "T112", teacherName: "Coach R. Manoharan", room: "Playground" },
-
-    // Morning and Evening Shifts for 10-A and 12-A
-    { id: "TT-MOR-10A-M", classId: "10-A", day: "Monday", period: "M1", shift: "morning", subjectId: "SUB-MAT", subjectName: "Board Exam Special Problem Solving", teacherId: "T101", teacherName: "Dr. Arvind Sharma", room: "Room 101" },
-    { id: "TT-MOR-12A-M", classId: "12-A", day: "Monday", period: "M1", shift: "morning", subjectId: "SUB-PHY", subjectName: "IIT-JEE / NEET Concept Drill", teacherId: "T103", teacherName: "Mr. Suresh Verma", room: "Room 301" },
-    { id: "TT-EVE-10A-T", classId: "10-A", day: "Tuesday", period: "E1", shift: "evening", subjectId: "SUB-MAT", subjectName: "Mathematics Foundation Booster", teacherId: "T101", teacherName: "Dr. Arvind Sharma", room: "Room 101" },
-    { id: "TT-EVE-12A-T", classId: "12-A", day: "Tuesday", period: "E1", shift: "evening", subjectId: "SUB-CHE", subjectName: "Organic Chemistry Mechanism Review", teacherId: "T104", teacherName: "Dr. Sunita Rao", room: "Room 301" }
-  ],
-  // Special Tests for Classes 10, 11, and 12
-  specialTests: [
-    {
-      id: "TEST-1001",
-      title: "Class 10 CBSE Pre-Board Unit Test 2",
-      classId: "10-A",
-      targetClasses: ["10-A", "10-B"],
-      subjectId: "SUB-MAT",
-      subjectName: "Mathematics",
-      testType: "Unit Test",
-      date: "2026-11-04",
-      startTime: "09:00 AM",
-      endTime: "11:00 AM",
-      replacePeriods: [1, 2, 3],
-      day: "Wednesday",
-      invigilatorId: "T105",
-      invigilatorName: "Mrs. Lakshmi Sundaram",
-      room: "Examination Hall 1",
-      totalMarks: 50,
-      instructions: "Calculators not allowed. Graph sheets will be provided.",
-      status: "scheduled"
-    },
-    {
-      id: "TEST-1002",
-      title: "Class 12 Physics Practical Model Exam",
-      classId: "12-A",
-      targetClasses: ["12-A"],
-      subjectId: "SUB-PHY-LAB",
-      subjectName: "Physics Practical",
-      testType: "Practical Exam",
-      date: "2026-11-06",
-      startTime: "01:00 PM",
-      endTime: "03:30 PM",
-      replacePeriods: [5, 6, 7],
-      day: "Friday",
-      invigilatorId: "T104",
-      invigilatorName: "Dr. Sunita Rao",
-      room: "C.V. Raman Physics Laboratory",
-      labId: "LAB-PHY",
-      totalMarks: 30,
-      instructions: "Bring signed practical observation notebooks and calculators.",
-      status: "scheduled"
-    },
-    {
-      id: "TEST-1003",
-      title: "Class 11 Chemistry Term Revision Test",
-      classId: "11-A",
-      targetClasses: ["11-A"],
-      subjectId: "SUB-CHE",
-      subjectName: "Chemistry",
-      testType: "Revision Test",
-      date: "2026-11-09",
-      startTime: "09:00 AM",
-      endTime: "10:30 AM",
-      replacePeriods: [1, 2],
-      day: "Monday",
-      invigilatorId: "T107",
-      invigilatorName: "Mr. Anand Ranganathan",
-      room: "Room 201",
-      totalMarks: 40,
-      instructions: "Periodic tables provided with question paper.",
-      status: "scheduled"
-    }
-  ],
-  // Substitutions
-  substitutions: [
-    {
-      id: "SUB-001",
-      date: "2026-10-28",
-      day: "Wednesday",
-      period: 5,
-      classId: "10-A",
-      subjectId: "SUB-PHY",
-      subjectName: "Physics",
-      absentTeacherId: "T104",
-      absentTeacherName: "Dr. Sunita Rao",
-      substituteTeacherId: "T103",
-      substituteTeacherName: "Mr. Suresh Verma",
-      reason: "Medical Emergency",
-      dutyType: "Subject Teaching",
-      assignedBy: "Admin",
-      status: "confirmed",
-      timestamp: "2026-10-28T08:15:00Z"
-    }
-  ],
-  // Teacher Leaves / Absences
-  leaves: [
-    {
-      id: "LEV-001",
-      teacherId: "T104",
-      teacherName: "Dr. Sunita Rao",
-      startDate: "2026-10-28",
-      endDate: "2026-10-28",
-      type: "Sick Leave",
-      reason: "Fever and cold",
-      status: "Approved",
-      affectedPeriodsCount: 4
-    }
-  ]
+  timetable: [],
+  specialTests: [],
+  substitutions: [],
+  leaves: []
 };
